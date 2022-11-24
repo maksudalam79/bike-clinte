@@ -6,16 +6,14 @@ const Categories = () => {
     
     queryKey: ['repoData'],
     queryFn: () =>
-      fetch('bikeCategories.json')
+      fetch('http://localhost:5000/bikeCategories')
       .then(res =>res.json())
      
   })
   if (isLoading) return 'Loading...'
 if (error) return 'An error has occurred: ' + error.message
 
-const handlerDetails=()=>{
-  
-}
+
 
   return (
     <div className="">
@@ -24,7 +22,7 @@ const handlerDetails=()=>{
         categories.map(category=><CategoriesSection
         key={category.id}
         category={category}
-        handlerDetails={handlerDetails}
+      
         ></CategoriesSection>)
       }
     </div>
