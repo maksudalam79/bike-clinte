@@ -7,12 +7,12 @@ const Navbar = () => {
       <li>
         <Link to="/">Home</Link>
       </li>
-      {/* <li>
-        <Link to="/"></Link>
-      </li> */}
-      {/* <li>
-        <Link to=""></Link>
-      </li> */}
+      <li>
+        <Link to="/login">Log In</Link>
+      </li>
+      <li>
+        <Link to="/signup">Sign Up</Link>
+      </li>
       <li>
         <Link to="/">Blogs</Link>
       </li>
@@ -23,7 +23,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar flex justify-between">
+    <div className="navbar flex justify-between bg-[#131313] text-white">
     <div className="navbar-start">
       <div className="dropdown">
         <label tabIndex={0} className="btn btn-ghost lg:hidden">

@@ -1,0 +1,80 @@
+[
+    {
+        "id":1,
+        "name":"Classic Motorcycle",
+        "description":"Classic, vintage or antique motorcycles are generally at least 25 years old and look the way they were intended to when first manufactured or built. Depending on the insurer, classic bikes as young as 20 years old can be considered vintage, but this isn't always the case.",
+        "products":[
+            {
+                "img":"https://i.ibb.co/ySdk766/classic-1977-Honda-CB750.jpg",
+                "name":"Honda CB750",
+                "location":"Hajigong",
+                "resale-price":"15000",
+                "original-price":"45000",
+                "year-of-use":"2 years",
+                "seller-Name":"Md.Maksud Alam"
+            },
+            {
+                "img":"https://i.ibb.co/T1KzfYd/archetypical-cruiser-Harley-Softail.jpg",
+                "name":"harley-davidson softail",
+                "location":"Chandpur",
+                "resale-price":"15 lakh",
+                "original-price":"18.65 Lakh",
+                "year-of-use":"1 years",
+                "seller-Name":"Md.Maksud Alam"
+            }
+        ]
+
+    },
+    {
+        "id":2,
+        "name":"Street Motorcycle",
+        "description":"Street motorcycles are motorcycles designed for being ridden on paved roads. They have smooth tires with tread patterns and engines generally in the 125 cc (7.6 cu in) and over range. Typically, street motorcycles are capable of speeds up to 100 mph (160 km/h), and many of speeds in excess of 125 mph (201 km/h).",
+        "products":[
+            {
+                "img":"https://i.ibb.co/1MBDBbj/photo-1606907568152-58fcb0a0a4e5.jpg",
+                "name":"Lexmoto LXR 125",
+                "location":"Hajigong",
+                "resale-price":"3.54 lake",
+                "original-price":"3 lake",
+                "year-of-use":"6 month",
+                "seller-Name":"Md.Maksud Alam"
+            },
+            {
+                "img":"https://i.ibb.co/mFH0Z0c/76b1184e5f977f690eb4647fa15d7264.jpg",
+                "name":"Yamaha YZF R1M",
+                "location":"Dhaka",
+                "resale-price":"28,00,000 lakh",
+                "original-price":"35,00,000 Lakh",
+                "year-of-use":"1 years",
+                "seller-Name":"Mariya"
+            }
+        ]
+
+    },
+    {
+        "id":3,
+        "name":"Cross Motorcycle",
+        "description":"Motocross is a form of off-road motorcycle racing held on enclosed off-road circuits. The sport evolved from motorcycle trials competitions held in the United Kingdom.",
+        "products":[
+            {
+                "img":"https://i.ibb.co/HYNPgpP/2021-Yamaha-YZ250-8.jpg",
+                "name":"Yamaha YZ250",
+                "location":"Nowakhali",
+                "resale-price":"500000 lekh",
+                "original-price":"750000 lekh",
+                "year-of-use":"1 years",
+                "seller-Name":"Md.Kamal hasan"
+            },
+            {
+                "img":"https://i.ibb.co/q14sK8Q/44bdd1225ab0ca60b4af164e5123cdde.jpg",
+                "name":"Yamaha YZ125",
+                "location":"Chandpur",
+                "resale-price":"50000 hajar",
+                "original-price":"89,500 hajar",
+                "year-of-use":"6 month",
+                "seller-Name":"Md.Maksud Alam"
+            }
+        ]
+
+    }
+]
