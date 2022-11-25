@@ -10,6 +10,8 @@ import Login from "../pages/LogIn/Login";
 import Signup from "../pages/SignUp/Signup";
 import AllUsers from "../layout/DeshBoard/AllUsers";
 
+import PrivateAdmin from "./PrivateAdmin";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -49,7 +51,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashBoard/users",
-        element: <AllUsers></AllUsers>,
+        element: (
+          <PrivateAdmin>
+            <AllUsers></AllUsers>
+          </PrivateAdmin>
+        ),
       },
     ],
   },

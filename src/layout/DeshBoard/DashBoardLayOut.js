@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import Navbar from '../share/Navbar/Navbar';
 import image from '../../asset/wp4106661.jpg'
+import { AuthContext } from '../../context/AuthProvider';
+import useAdmin from '../../hooks/useAdmin';
 
 const DashBoardLayOut = () => {
+    const {user}=useContext(AuthContext)
+    const [isAdmin]=useAdmin(user?.email)
     return (
         <div>
          <Navbar></Navbar>
@@ -19,8 +23,13 @@ const DashBoardLayOut = () => {
     <ul className="menu p-4 w-80 bg-base-100 text-base-content">
      
       <li><Link to='/dashBoard'>My Order</Link></li>
-      <li><Link to='/dashBoard/users'>All User</Link></li>
-      <li><Link to='/dashBoard/users'>All Sellers</Link></li>
+      {isAdmin &&
+        <>
+        <li><Link to='/dashBoard/users'>All User</Link></li>
+        <li><Link to='/dashBoard/users'>All Sellers</Link></li>
+        </>
+        }
+      
       
     </ul>
   
