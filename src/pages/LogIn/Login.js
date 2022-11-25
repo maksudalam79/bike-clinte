@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
+import useToken from "../../hooks/useToken";
 
 const Login = () => {
   const {
@@ -10,26 +11,32 @@ const Login = () => {
     handleSubmit,
   } = useForm();
   const { signIn } = useContext(AuthContext);
-  // const [logInerror, setLoginError] = useState("");
-  // const [loginUserEmail, setLoginUserEmail] = useState("");
+  const [logInerror, setLoginError] = useState("");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [token]=useToken(loginEmail)
 
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+  
+  if(token){
+    navigate(from,{replace:true})
+  }
+
 
   const handlerLogin = (data) => {
     console.log(data);
-
+    setLoginError('')
     signIn(data.email, data.password)
       .then((result) => {
         const user = result.user;
         console.log(user);
-        // setLoginUserEmail(data.email);
-        navigate(from, { replace: true });
+        setLoginEmail(data.email);
+     
       })
       .catch((error) => {
         console.log(error.message);
-        // setLoginError(error.message);
+        setLoginError(error.message);
       });
   };
   return (
@@ -74,7 +81,7 @@ const Login = () => {
           </di>
           <input className="btn w-full" value="Log in" type="submit" />
           <div>
-            {/* {logInerror && <p className="text-red-600">{logInerror}</p>} */}
+            {logInerror && <p className="text-red-500">{logInerror}</p>}
           </div>
         </form>
         <label className="label">

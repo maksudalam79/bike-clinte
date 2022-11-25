@@ -8,6 +8,7 @@ import CategoryDetails from "../pages/Home/Categories/Deatiles/CategoryDetails";
 import Home from "../pages/Home/Home";
 import Login from "../pages/LogIn/Login";
 import Signup from "../pages/SignUp/Signup";
+import AllUsers from "../layout/DeshBoard/AllUsers";
 
 export const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashBoard",
         element: <MyOrder></MyOrder>,
+      },
+      {
+        path: "/dashBoard/users",
+        element: <AllUsers></AllUsers>,
       },
     ],
   },
