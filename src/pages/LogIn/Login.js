@@ -79,7 +79,7 @@ const Login = () => {
         </form>
         <label className="label">
           <span className="label-text">
-            New to Doctors Portal?{" "}
+            New to LEX RIDER?{" "}
             <Link to="/signup" className="text-primary">
               Create new account
             </Link>

@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../../../context/AuthProvider";
 
-const BookModal = ({ item }) => {
-  console.log(item);
-  const { name, resaleprice, img } = item;
+const BookModal = ({ item,setItem }) => {
+  const { name: productName, resaleprice, img } = item;
   const { user } = useContext(AuthContext);
   const handlarModalSubmit = (event) => {
     event.preventDefault();
@@ -16,13 +16,30 @@ const BookModal = ({ item }) => {
     const location = from.location.value;
 
     const buyer = {
-      name,
+      name:productName,
       buyerName: name,
       email,
       phone,
       price,
       location,
     };
+
+    fetch("http://localhost:5000/buyer", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(buyer),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          toast.success("Thank you so much for your order");
+          from.reset()
+          setItem(null)
+        }
+      });
   };
 
   return (
@@ -36,7 +53,7 @@ const BookModal = ({ item }) => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">{name}</h3>
+          <h3 className="text-lg font-bold">{productName}</h3>
           <img src={img} alt="" />
           <form
             onSubmit={handlarModalSubmit}

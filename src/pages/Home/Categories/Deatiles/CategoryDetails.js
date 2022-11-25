@@ -20,7 +20,7 @@ const CategoryDetails = () => {
           handlerModal={handlerModal}
         ></ProductDetails>
       ))}
-      <>{item && <BookModal item={item}></BookModal>}</>
+      <>{item && <BookModal item={item}setItem={setItem}></BookModal>}</>
     </div>
   );
 };

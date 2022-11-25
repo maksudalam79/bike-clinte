@@ -89,7 +89,7 @@ const Signup = () => {
         </form>
         <label className="label">
           <span className="label-text">
-            New to Doctors Portal?{" "}
+          LEX RIDER?{" "}
             <Link to="/login" className="text-primary">
               Log in
             </Link>

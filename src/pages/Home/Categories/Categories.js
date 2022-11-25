@@ -1,7 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../../context/AuthProvider";
 import CategoriesSection from "./CategoriesSection";
 const Categories = () => {
+  
   const { isLoading, error, data:categories } = useQuery({
     
     queryKey: ['bikeCategories'],
@@ -10,7 +12,9 @@ const Categories = () => {
       .then(res =>res.json())
      
   })
-  if (isLoading) return 'Loading...'
+  if (isLoading){
+    return <progress className="progress w-56"></progress>
+  }
 if (error) return 'An error has occurred: ' + error.message
 
 
