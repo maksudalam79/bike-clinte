@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
+import useToken from "../../hooks/useToken";
 
 const Signup = () => {
   const {
@@ -12,8 +13,14 @@ const Signup = () => {
   } = useForm();
   const { currentUser, updateUser } = useContext(AuthContext);
   const [signUperror, setSignupError] = useState("");
-
+  const [createEmail,setCreatedEmail]=useState('')
+  const [token]=useToken(createEmail)
   const navigate = useNavigate();
+  
+  if(token){
+    navigate('/')
+  }
+
 
   const handlerSignUp = (data) => {
     setSignupError("");
@@ -29,7 +36,7 @@ const Signup = () => {
         };
         updateUser(userInfo)
           .then(() => {
-            saveUser(data.name,data.email)
+            saveUser(data.name, data.email);
           })
           .catch((error) => console.log(error));
       })
@@ -37,28 +44,22 @@ const Signup = () => {
         console.error(error);
         setSignupError(error.message);
       });
+  };
 
-  }
-
-
-  const saveUser=(name,email)=>{
-    const user={name,email}
-    fetch('http://localhost:5000/users',{
-      method:'POST',
-      headers:{
-        'content-type':'application/json'
+  const saveUser = (name, email) => {
+    const user = { name, email };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
       },
-      body:JSON.stringify(user)
+      body: JSON.stringify(user),
     })
-    .then(res=>res.json())
-    .then(data=>{
-      console.log('saveUser',data)
-      navigate('/')
-
-    })
-  }
-
-
+      .then((res) => res.json())
+      .then((data) => {
+        setCreatedEmail(email)
+      });
+  };
   
 
   return (
@@ -109,7 +110,7 @@ const Signup = () => {
         </form>
         <label className="label">
           <span className="label-text">
-          LEX RIDER?{" "}
+            LEX RIDER?{" "}
             <Link to="/login" className="text-primary">
               Log in
             </Link>

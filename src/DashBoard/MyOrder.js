@@ -11,7 +11,12 @@ const MyOrder = () => {
     data: buying = [],
   } = useQuery({
     queryKey: ["buyer", user?.email],
-    queryFn: () => fetch(url).then((res) => res.json()),
+    queryFn: () => fetch(url,{
+      headers:{
+        authorization:`bearer ${localStorage.getItem('accessToken')}`
+      }
+    })
+    .then((res) => res.json()),
   });
 
   if (isLoading) return "Loading...";
