@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import image from '../../../asset/wp4106661.jpg'
 
 const CategoriesSection = ({category}) => {
-    console.log(category)
+    
     const {_id,name,description}=category
     return (
         <div className="hero min-h-screen" style={{ backgroundImage:`url(${image})`}}>
