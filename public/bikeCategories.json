@@ -25,7 +25,7 @@
                 "condition":"Excellent"
             }
         ]
-
+        
     },
     {
       
@@ -54,6 +54,7 @@
                 "condition":"Good"
             }
         ]
+       
 
     },
     {
@@ -83,6 +84,8 @@
                 "condition":"Good"
             }
         ]
+
+       
 
     }
 ]

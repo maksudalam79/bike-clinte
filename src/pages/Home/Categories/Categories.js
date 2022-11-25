@@ -4,7 +4,7 @@ import CategoriesSection from "./CategoriesSection";
 const Categories = () => {
   const { isLoading, error, data:categories } = useQuery({
     
-    queryKey: ['repoData'],
+    queryKey: ['bikeCategories'],
     queryFn: () =>
       fetch('http://localhost:5000/bikeCategories')
       .then(res =>res.json())
