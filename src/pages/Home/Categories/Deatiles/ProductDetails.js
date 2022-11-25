@@ -8,14 +8,14 @@ const ProductDetails = ({product}) => {
         <figure><img src={img} alt="Shoes" /></figure>
         <div className="card-body">
           <h2 className="card-title">{name}</h2>
-          <p>{location}</p>
-          <p>{resaleprice}</p>
-          <p>{originalprice}</p>
-          <p>{yearofuse}</p>
-          <p>{sellerName}</p>
+          <p>Location: {location}</p>
+          <p>Resale-Price: {resaleprice}</p>
+          <p>Orginal-Price{originalprice}</p>
+          <p>Use: {yearofuse}</p>
+          <p>Seller-Name:{sellerName}</p>
           <p>{condition}</p>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
+            <button className="btn btn-primary">Book Now</button>
           </div>
         </div>
       </div>
