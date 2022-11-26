@@ -1,6 +1,7 @@
 import { format } from "date-fns";
 import React, { useContext, useState } from "react";
 import { DayPicker } from 'react-day-picker';
+import toast from "react-hot-toast";
 import image from '../../asset/catagories Bike Img/fastest-motorcycles-top-speed-list-luxe-digital-1200x600.jpg'
 import { AuthContext } from "../../context/AuthProvider";
 
@@ -30,8 +31,23 @@ const AddAProducts = () => {
         resaleprice,
         originalprice,
         yearofuse,
-        sellerName:user?.displayName
+        sellerName
       }
+      fetch("http://localhost:5000/bikeProduct", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(addProduct),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        form.reset();
+        toast.success("add your service");
+      })
+      .catch((error) => console.error(error));
+
       
 
     }
