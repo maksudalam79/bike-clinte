@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../../../../context/AuthProvider";
 import BookModal from "./BookModal/BookModal";
 
 const ProductDetails = ({ product,handlerModal}) => {
@@ -13,7 +14,7 @@ const ProductDetails = ({ product,handlerModal}) => {
     sellerName,
     condition,
   } = product;
-  
+ 
   
   return (
     <div className="card w-96 bg-base-100 shadow-xl image-full">
@@ -35,6 +36,8 @@ const ProductDetails = ({ product,handlerModal}) => {
         className="btn btn-primary">
           Book Now
         </label>
+       
+      
       </div>
       
     </div>

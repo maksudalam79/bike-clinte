@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../../../context/AuthProvider";
 
-const BookModal = ({ item,setItem }) => {
+const BookModal = ({ item,setItem,handlerWishList }) => {
   const { name: productName, resaleprice, img } = item;
   const { user } = useContext(AuthContext);
   const handlarModalSubmit = (event) => {
@@ -23,8 +23,7 @@ const BookModal = ({ item,setItem }) => {
       price,
       location,
     };
-
-    fetch("http://localhost:5000/buyer", {
+  fetch("http://localhost:5000/buyer", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -96,9 +95,9 @@ const BookModal = ({ item,setItem }) => {
             {user?.email ? (
               <input className="btn w-full" type="submit" value="Submit" />
             ) : (
-              <p>
-                Plzzz <Link to="/login">Log in</Link>{" "}
-              </p>
+              
+              <Link to="/login"><button className="btn btn-sm">Log In</button></Link>
+              
             )}
           </form>
         </div>

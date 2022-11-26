@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -10,16 +11,29 @@ const Signup = () => {
     register,
     formState: { errors },
     handleSubmit,
+   
   } = useForm();
-  const { currentUser, updateUser } = useContext(AuthContext);
+  const { currentUser, updateUser,providerLogin } = useContext(AuthContext);
   const [signUperror, setSignupError] = useState("");
   const [createEmail, setCreatedEmail] = useState("");
   const [token] = useToken(createEmail);
   const navigate = useNavigate();
+  const googleProvider = new GoogleAuthProvider();
+
 
   if (token) {
     navigate("/");
   }
+  
+  const handlergoogleSignin = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error));
+  };
+
 
   const handlerSignUp = (data) => {
     setSignupError("");
@@ -79,6 +93,7 @@ const Signup = () => {
               className="input input-bordered w-full"
             />
           </div>
+         
         <div className="form-control w-full">
             <label className="label">
               <span className="label-text">Email</span>
@@ -123,7 +138,7 @@ const Signup = () => {
           </span>
         </label>
         <div className="divider">OR</div>
-        <button className="btn w-full bg-base-100 ">
+        <button onClick={handlergoogleSignin} className="btn w-full bg-base-100 ">
           CONTINUE WITH GOOGLE
         </button>
       </div>

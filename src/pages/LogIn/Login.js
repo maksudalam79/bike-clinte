@@ -1,5 +1,7 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 import useToken from "../../hooks/useToken";
@@ -10,10 +12,12 @@ const Login = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const { signIn } = useContext(AuthContext);
+  const { signIn,providerLogin } = useContext(AuthContext);
   const [logInerror, setLoginError] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
+  
   const [token]=useToken(loginEmail)
+  const googleProvider = new GoogleAuthProvider();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -22,9 +26,15 @@ const Login = () => {
   if(token){
     navigate(from,{replace:true})
   }
-
-
-  const handlerLogin = (data) => {
+  const handlergoogleSignin = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error));
+  };
+const handlerLogin = (data) => {
     console.log(data);
     setLoginError('')
     signIn(data.email, data.password)
@@ -32,11 +42,27 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         setLoginEmail(data.email);
-     
+     toast.success('User login')
+  
+     saveUser(data.name,data.email)
       })
       .catch((error) => {
         console.log(error.message);
         setLoginError(error.message);
+      });
+  };
+  const saveUser = (name, email) => {
+    const user = { name, email };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setLoginEmail(data.email);
       });
   };
   return (
@@ -57,6 +83,7 @@ const Login = () => {
               <p className="text-red-500">{errors.email?.message}</p>
             )}
           </div>
+         
           <di className="form-control w-full">
             <label className="label">
               <span className="label-text">Password</span>
@@ -93,7 +120,7 @@ const Login = () => {
           </span>
         </label>
         <div className="divider">OR</div>
-        <button className="btn w-full bg-base-100 ">
+        <button onClick={handlergoogleSignin} className="btn w-full bg-base-100 ">
           CONTINUE WITH GOOGLE
         </button>
       </div>

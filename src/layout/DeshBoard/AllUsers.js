@@ -23,10 +23,10 @@ const handlerUbdateBtn=id=>{
     .then(res=>res.json())
     .then(data=>{
         console.log(data)
-        if(data.modifiedCount >0){
-            toast.success('Admin successful')
-            refetch()
-        }
+        // if(data.modifiedCount >0){
+        //     toast.success('Admin successful')
+        //     refetch()
+        // }
     })
 }
 
@@ -53,7 +53,7 @@ const handlerUbdateBtn=id=>{
                 <th>{i+1}</th>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
-                <td>{user?.role!=='admin'&& <button onClick={()=>handlerUbdateBtn(user?._id)} className='btn btn-sm btn-primary'>Admin</button>}</td>
+                <td>{user?.role !== 'admin' && <button onClick={()=>handlerUbdateBtn(user?._id)} className='btn btn-sm btn-primary'>Admin</button>}</td>
                 <td><button className='btn btn-sm btn-danger'>Delete</button></td>
                 
               </tr>

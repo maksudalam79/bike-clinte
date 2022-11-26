@@ -1,25 +1,31 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import { AuthContext } from "../context/AuthProvider";
+import Loading from "../layout/share/loading/Loading";
 
 const MyOrder = () => {
   const { user } = useContext(AuthContext);
-  const url = `http://localhost:5000/buyer?email=${user?.email}`;
+
   const {
     isLoading,
     error,
     data: buying = [],
   } = useQuery({
     queryKey: ["buyer", user?.email],
-    queryFn: () => fetch(url,{
-      headers:{
-        authorization:`bearer ${localStorage.getItem('accessToken')}`
-      }
-    })
-    .then((res) => res.json()),
+    queryFn: async () => {
+      const res = await fetch(
+        `http://localhost:5000/buyer?email=${user?.email}`,
+        {
+          headers: {
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
+      const data = await res.json();
+      return data;
+    },
   });
-
-  if (isLoading) return "Loading...";
+  if (isLoading) return <Loading></Loading>;
 
   if (error) return "An error has occurred: " + error.message;
   return (
@@ -36,7 +42,9 @@ const MyOrder = () => {
             </tr>
           </thead>
           <tbody>
-            {buying.map((buy, i) => (
+            {
+            buying &&
+            buying?.map((buy, i) => (
               <tr className="hover" key={buy._id}>
                 <th>{i + 1}</th>
                 <td>{buy.name}</td>

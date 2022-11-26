@@ -11,6 +11,8 @@ import Signup from "../pages/SignUp/Signup";
 import AllUsers from "../layout/DeshBoard/AllUsers";
 
 import PrivateAdmin from "./PrivateAdmin";
+import Blogs from "../pages/Blogs/Blogs";
+import Found from "../pages/Found/Found";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +41,14 @@ export const router = createBrowserRouter([
         path: "/addproducts",
         element: <AddAProducts></AddAProducts>,
       },
+      {
+        path: "/blogs",
+        element: <Blogs></Blogs>,
+      },
+      {
+        path: "*",
+        element: <Found></Found>,
+      },
     ],
   },
   {
@@ -51,12 +61,12 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashBoard/users",
-        element: (
-          <PrivateAdmin>
-            <AllUsers></AllUsers>
-          </PrivateAdmin>
-        ),
-      },
+        element: <PrivateAdmin><AllUsers></AllUsers></PrivateAdmin>
+          },
+          {
+            path: "*",
+            element: <Found></Found>,
+          },
     ],
   },
 ]);
