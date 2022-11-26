@@ -5,30 +5,7 @@
         "img":"https://i.ibb.co/ySdk766/classic-1977-Honda-CB750.jpg",
         "products":
        
-        [
-          
-            {
-
-                "img":"https://i.ibb.co/ySdk766/classic-1977-Honda-CB750.jpg",
-                "name":"Honda CB750",
-                "location":"Hajigong",
-                "resaleprice":"15000",
-                "originalprice":"45000",
-                "yearofuse":"2 years",
-                "sellerName":"Md.Maksud Alam",
-                "condition":"Good"
-            },
-            {
-                "img":"https://i.ibb.co/T1KzfYd/archetypical-cruiser-Harley-Softail.jpg",
-                "name":"harley-davidson softail",
-                "location":"Chandpur",
-                "resaleprice":"150000",
-                "originalprice":"1800000",
-                "yearofuse":"1 years",
-                "sellerName":"Md.Maksud Alam",
-                "condition":"Excellent"
-            }
-        ]
+       
         
     },
     {

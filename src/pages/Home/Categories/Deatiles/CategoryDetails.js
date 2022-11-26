@@ -5,6 +5,7 @@ import ProductDetails from "./ProductDetails";
 
 const CategoryDetails = () => {
   const category = useLoaderData();
+ 
   const [item, setItem] = useState(null);
 
   const handlerModal = (e) => {
@@ -13,7 +14,7 @@ const CategoryDetails = () => {
 
   return (
     <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 justify-items-center gap-4 bg-[#131313]">
-      {category.products.map((product) => (
+      {category.map((product) => (
         <ProductDetails
           product={product}
           setItem={product}
@@ -22,6 +23,7 @@ const CategoryDetails = () => {
       ))}
       <>{item && <BookModal item={item}setItem={setItem}></BookModal>}</>
     </div>
+   
   );
 };
 

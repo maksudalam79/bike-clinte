@@ -4,6 +4,7 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
@@ -19,6 +20,11 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
+  const providerLogin=(Provider)=>{
+    setLoading(true)
+   return signInWithPopup(auth,Provider)
+}
+
   const signIn = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
@@ -43,6 +49,7 @@ const AuthProvider = ({ children }) => {
     signIn,
     logOut,
     user,
+    providerLogin,
     loading,
   };
   return (

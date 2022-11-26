@@ -23,9 +23,9 @@ if (error) return 'An error has occurred: ' + error.message
     <div className="">
       <h2 className="text-5xl mx-auto text-center bg-[#131313] text-white font-bold p-5">Our Services</h2>
       {
-        categories.map(category=><CategoriesSection
-        key={category.id}
-        category={category}
+        categories.map(cate=><CategoriesSection
+        key={cate.id}
+        cate={cate}
       
         ></CategoriesSection>)
       }
