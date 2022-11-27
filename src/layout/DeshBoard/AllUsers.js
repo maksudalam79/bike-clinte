@@ -7,12 +7,15 @@ const AllUsers = () => {
     const { isLoading, error, data:users=[],refetch } = useQuery({
         queryKey: ['users'],
         queryFn: () =>
-          fetch('http://localhost:5000/users').then(res =>
+          fetch('http://localhost:5000/users')
+          .then(res =>
             res.json()
           )
       })
     if (isLoading) return <Loading></Loading>
 if (error) return 'An error has occurred: ' + error.message
+
+
 const handlerUbdateBtn=id=>{
     fetch(`http://localhost:5000/users/admin/${id}`,{
         method:'PUT',
@@ -23,7 +26,7 @@ const handlerUbdateBtn=id=>{
     .then(res=>res.json())
     .then(data=>{
         console.log(data)
-        if(data.modifiedCount >0){
+        if(data.modifiedCount > 0){
             toast.success('Admin successful')
             refetch()
         }
