@@ -4,7 +4,7 @@ import Loading from '../share/loading/Loading';
 
 const Allbuyer = () => {
     const role={
-        role:"buyer"
+        role:"Buyer"
     }
     const { isLoading, error, data:users=[] } = useQuery({
        
