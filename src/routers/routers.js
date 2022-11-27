@@ -14,6 +14,8 @@ import PrivateAdmin from "./PrivateAdmin";
 import Blogs from "../pages/Blogs/Blogs";
 import Found from "../pages/Found/Found";
 import Payment from "../layout/DeshBoard/Payment/Payment";
+import AllSeller from "../layout/DeshBoard/AllSeller";
+import Allbuyer from "../layout/DeshBoard/Allbuyer";
 
 export const router = createBrowserRouter([
   {
@@ -63,6 +65,16 @@ export const router = createBrowserRouter([
       {
         path: "/dashBoard/users",
         element: <PrivateAdmin><AllUsers></AllUsers></PrivateAdmin>
+      },
+      {
+        path: "/dashBoard/users/allseller",
+        element: <PrivateAdmin><AllSeller></AllSeller></PrivateAdmin>
+        
+      },
+      {
+        path: "/dashBoard/users/allbuyer",
+        element: <PrivateAdmin><Allbuyer></Allbuyer></PrivateAdmin>
+        
       },
       {
         path: "/dashBoard/payment/:id",

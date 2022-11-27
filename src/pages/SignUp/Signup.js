@@ -11,20 +11,18 @@ const Signup = () => {
     register,
     formState: { errors },
     handleSubmit,
-   
   } = useForm();
-  const { currentUser, updateUser,providerLogin } = useContext(AuthContext);
+  const { currentUser, updateUser, providerLogin } = useContext(AuthContext);
   const [signUperror, setSignupError] = useState("");
   const [createEmail, setCreatedEmail] = useState("");
   const [token] = useToken(createEmail);
   const navigate = useNavigate();
   const googleProvider = new GoogleAuthProvider();
 
-
   if (token) {
     navigate("/");
   }
-  
+
   const handlergoogleSignin = () => {
     providerLogin(googleProvider)
       .then((result) => {
@@ -34,26 +32,20 @@ const Signup = () => {
       .catch((error) => console.log(error));
   };
 
-
   const handlerSignUp = (data) => {
     setSignupError("");
-   
-      
- 
-
-
     currentUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
         console.log(user);
-
         toast("User Create Successfully");
         const userInfo = {
           displayName: data.name,
+          role:data.role
         };
         updateUser(userInfo)
           .then(() => {
-            saveUser(data.name, data.email);
+            saveUser(data.name, data.email,data.role);
           })
           .catch((error) => console.log(error));
       })
@@ -62,9 +54,8 @@ const Signup = () => {
         setSignupError(error.message);
       });
   };
-
-  const saveUser = (name, email) => {
-    const user = { name, email };
+  const saveUser = (name, email,role) => {
+    const user = { name, email,role };
     fetch("http://localhost:5000/users", {
       method: "POST",
       headers: {
@@ -93,8 +84,8 @@ const Signup = () => {
               className="input input-bordered w-full"
             />
           </div>
-         
-        <div className="form-control w-full">
+
+          <div className="form-control w-full">
             <label className="label">
               <span className="label-text">Email</span>
             </label>
@@ -104,6 +95,19 @@ const Signup = () => {
               className="input input-bordered w-full"
             />
             {errors.email && <p role="alert">{errors.email?.message}</p>}
+          </div>
+          <div className="space-y-1 text-sm mb-3">
+            <label htmlFor="password" className="block text-blue-900 text-lg">
+              Enter your Option
+            </label>
+            <select
+              {...register("role")}
+              className="space-y-1 text-sm mb-3 lg:w-4/5 rounded-3xl py-2 px-2 outline-none "
+            >
+              <option value="seller">seller</option>
+              <option value="Buyer">Buyer</option>
+            </select>
+            {errors.email && <p>{errors.email.message}</p>}
           </div>
           <div className="form-control w-full">
             <label className="label">
@@ -122,11 +126,7 @@ const Signup = () => {
             />
             {errors.password && <p role="alert">{errors.password?.message}</p>}
           </div>
-          <input 
-
-          className="btn w-full mt-4" 
-          value="Sign Up" 
-          type="submit" />
+          <input className="btn w-full mt-4" value="Sign Up" type="submit" />
           {signUperror && <p className="text-red-600">{signUperror}</p>}
         </form>
         <label className="label">
@@ -138,7 +138,10 @@ const Signup = () => {
           </span>
         </label>
         <div className="divider">OR</div>
-        <button onClick={handlergoogleSignin} className="btn w-full bg-base-100 ">
+        <button
+          onClick={handlergoogleSignin}
+          className="btn w-full bg-base-100 "
+        >
           CONTINUE WITH GOOGLE
         </button>
       </div>

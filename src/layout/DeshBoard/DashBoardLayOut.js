@@ -6,9 +6,11 @@ import { AuthContext } from '../../context/AuthProvider';
 import useAdmin from '../../hooks/useAdmin';
 import Footer from '../share/Footer/Footer';
 
+
 const DashBoardLayOut = () => {
     const {user}=useContext(AuthContext)
     const [isAdmin]=useAdmin(user?.email)
+    
     return (
         <div>
          <Navbar></Navbar>
@@ -27,7 +29,8 @@ const DashBoardLayOut = () => {
       { isAdmin &&
         <>
         <li><Link to='/dashBoard/users'>All User</Link></li>
-        <li><Link to='/dashBoard/users'>All Sellers</Link></li>
+        <li><Link to="/dashBoard/users/allseller">All Sellers</Link></li>
+        <li><Link to="/dashBoard/users/allbuyer">All Buyer</Link></li>
         </>
         }
       

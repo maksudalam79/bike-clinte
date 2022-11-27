@@ -23,19 +23,20 @@ const handlerUbdateBtn=id=>{
     .then(res=>res.json())
     .then(data=>{
         console.log(data)
-        // if(data.modifiedCount >0){
-        //     toast.success('Admin successful')
-        //     refetch()
-        // }
+        if(data.modifiedCount >0){
+            toast.success('Admin successful')
+            refetch()
+        }
     })
 }
+
 
 
     return (
         
             
         <div>
-            <h3 className='text-xl'>All Users</h3>
+            <h3 className='text-4xl font-bold text-center'>All Users</h3>
             <div className="overflow-x-auto m-2">
         <table className="table table-zebra w-full">
           <thead>
@@ -44,7 +45,7 @@ const handlerUbdateBtn=id=>{
               <th>Name</th>
               <th>Email</th>
               <th>Update</th>
-              <th>Delete</th>
+              
             </tr>
           </thead>
           <tbody>
@@ -54,7 +55,8 @@ const handlerUbdateBtn=id=>{
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>{user?.role !== 'admin' && <button onClick={()=>handlerUbdateBtn(user?._id)} className='btn btn-sm btn-primary'>Admin</button>}</td>
-                <td><button className='btn btn-sm btn-danger'>Delete</button></td>
+                
+               
                 
               </tr>
             ))}
