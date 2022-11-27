@@ -11,11 +11,13 @@ import Signup from "../pages/SignUp/Signup";
 import AllUsers from "../layout/DeshBoard/AllUsers";
 
 import PrivateAdmin from "./PrivateAdmin";
+import PrivateSeller from "./PrivateSeller";
 import Blogs from "../pages/Blogs/Blogs";
 import Found from "../pages/Found/Found";
 import Payment from "../layout/DeshBoard/Payment/Payment";
 import AllSeller from "../layout/DeshBoard/AllSeller";
 import Allbuyer from "../layout/DeshBoard/Allbuyer";
+import PrivateBuyer from "./PrivateBuyer";
 
 export const router = createBrowserRouter([
   {
@@ -42,7 +44,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/addproducts",
-        element: <AddAProducts></AddAProducts>,
+        element:<PrivateSeller><AddAProducts></AddAProducts></PrivateSeller>,
       },
       {
         path: "/blogs",
@@ -74,6 +76,11 @@ export const router = createBrowserRouter([
       {
         path: "/dashBoard/users/allbuyer",
         element: <PrivateAdmin><Allbuyer></Allbuyer></PrivateAdmin>
+        
+      },
+      {
+        path: "/dashBoard/users/myBuyers",
+        element: <PrivateSeller><Allbuyer></Allbuyer></PrivateSeller>
         
       },
       {
