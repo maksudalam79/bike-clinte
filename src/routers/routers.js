@@ -13,6 +13,7 @@ import AllUsers from "../layout/DeshBoard/AllUsers";
 import PrivateAdmin from "./PrivateAdmin";
 import Blogs from "../pages/Blogs/Blogs";
 import Found from "../pages/Found/Found";
+import Payment from "../layout/DeshBoard/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -62,11 +63,16 @@ export const router = createBrowserRouter([
       {
         path: "/dashBoard/users",
         element: <PrivateAdmin><AllUsers></AllUsers></PrivateAdmin>
-          },
-          {
-            path: "*",
-            element: <Found></Found>,
-          },
+      },
+      {
+        path: "/dashBoard/payment/:id",
+        element:<Payment></Payment>,
+        loader:({params})=>fetch(`http://localhost:5000/buyer/${params.id}`)
+      },
+      {
+        path: "*",
+        element: <Found></Found>,
+    },
     ],
   },
 ]);

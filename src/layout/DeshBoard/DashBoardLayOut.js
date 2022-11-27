@@ -4,6 +4,7 @@ import Navbar from '../share/Navbar/Navbar';
 import image from '../../asset/wp4106661.jpg'
 import { AuthContext } from '../../context/AuthProvider';
 import useAdmin from '../../hooks/useAdmin';
+import Footer from '../share/Footer/Footer';
 
 const DashBoardLayOut = () => {
     const {user}=useContext(AuthContext)
@@ -35,6 +36,7 @@ const DashBoardLayOut = () => {
   
   </div>
 </div>
+<Footer></Footer>
         </div>
     );
 };
