@@ -9,6 +9,8 @@ const AddAProducts = () => {
   const {user}=useContext(AuthContext)
     const [dateSelected,setdateSelected]=useState(new Date())
     const date=format(dateSelected,"PP")
+    const time=new Date()
+    console.log(time)
     const handlerAddproduct=(event)=>{
       event.preventDefault();
       const form = event.target;
@@ -31,7 +33,8 @@ const AddAProducts = () => {
         resaleprice,
         originalprice,
         yearofuse,
-        sellerName
+        sellerName,
+        time
       }
       fetch("http://localhost:5000/bikeProduct", {
       method: "POST",

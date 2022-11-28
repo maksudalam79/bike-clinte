@@ -18,6 +18,7 @@ import Payment from "../layout/DeshBoard/Payment/Payment";
 import AllSeller from "../layout/DeshBoard/AllSeller";
 import Allbuyer from "../layout/DeshBoard/Allbuyer";
 import PrivateBuyer from "./PrivateBuyer";
+import MyWishlist from "../DashBoard/MyWishlist";
 
 export const router = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashBoard",
         element: <MyOrder></MyOrder>,
+      },
+      {
+        path: "/dashBoard/wishlist",
+        element: <MyWishlist></MyWishlist>,
       },
       {
         path: "/dashBoard/users",

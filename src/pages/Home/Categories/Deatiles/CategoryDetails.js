@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import BookModal from "./BookModal/BookModal";
 import ProductDetails from "./ProductDetails";

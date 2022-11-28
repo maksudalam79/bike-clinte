@@ -12,6 +12,7 @@ const AllUsers = () => {
             res.json()
           )
       })
+      console.log(users)
     if (isLoading) return <Loading></Loading>
 if (error) return 'An error has occurred: ' + error.message
 
@@ -52,7 +53,7 @@ const handlerUbdateBtn=id=>{
             </tr>
           </thead>
           <tbody>
-            {users.map((user,i) => (
+            {users?.map((user,i) => (
               <tr key={user._id}>
                 <th>{i+1}</th>
                 <td>{user.name}</td>

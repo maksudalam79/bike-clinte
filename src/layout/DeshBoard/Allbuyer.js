@@ -15,9 +15,21 @@ const Allbuyer = () => {
             res.json()
           )
       })
+      const handleDelete = (_id) => {
+        fetch(`http://localhost:5000/users/${_id}`, {
+          method: 'DELETE',
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              alert("delete successfully");
+            }
+          });
+      };
       
-    if (isLoading) return <Loading></Loading>
-if (error) return 'An error has occurred: ' + error.message
+      if (isLoading) return <Loading></Loading>
+      if (error) return 'An error has occurred: ' + error.message
     return (
         <div>
         <h3 className='text-4xl font-bold text-center'>All Selller</h3>
@@ -38,7 +50,8 @@ if (error) return 'An error has occurred: ' + error.message
             <th>{i+1}</th>
             <td>{user.name}</td>
             <td>{user.email}</td>
-            <td>{<button className='btn btn-sm'>Delete</button>}</td>
+            <td>
+              <button  onClick={() => handleDelete(user._id)} className='btn btn-sm'>Delete</button></td>
             
            
             

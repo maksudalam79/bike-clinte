@@ -30,22 +30,27 @@ const DashBoardLayOut = () => {
     <ul className="menu p-4 w-80 bg-base-100 text-base-content">
      
       {isBuyer &&
-        <li><Link to='/dashBoard'>My Order</Link></li>
-        }
-      { isAdmin &&
         <>
+        <li><Link to='/dashBoard'>My Order</Link></li>
+        <li><Link to='/dashBoard/wishlist'>My wishlist</Link></li>
+        </>
+      }
+      { 
+        isAdmin &&
+        <>
+        
         <li><Link to='/dashBoard/users'>All User</Link></li>
         <li><Link to="/dashBoard/users/allseller">All Sellers</Link></li>
         <li><Link to="/dashBoard/users/allbuyer">All Buyer</Link></li>
         </>
-        }
-        {
+      }
+      {
           isSeller && 
           <>
           <li><Link to="/dashBoard/users/myBuyers">My Buyer</Link></li>
           <li><Link to="/dashBoard/users/mybuyer">My Product</Link></li>
           </>
-        }
+      }
       
       
     </ul>
