@@ -19,6 +19,8 @@ import AllSeller from "../layout/DeshBoard/AllSeller";
 import Allbuyer from "../layout/DeshBoard/Allbuyer";
 import PrivateBuyer from "./PrivateBuyer";
 import MyWishlist from "../DashBoard/MyWishlist";
+import AllReport from "../layout/DeshBoard/AllReport";
+import MyProducts from "../layout/DeshBoard/MyProducts";
 
 export const router = createBrowserRouter([
   {
@@ -79,6 +81,11 @@ export const router = createBrowserRouter([
         
       },
       {
+        path: "/dashBoard/users/report",
+        element:<PrivateAdmin><AllReport></AllReport></PrivateAdmin>
+        
+      },
+      {
         path: "/dashBoard/users/allbuyer",
         element: <PrivateAdmin><Allbuyer></Allbuyer></PrivateAdmin>
         
@@ -88,6 +95,12 @@ export const router = createBrowserRouter([
         element: <PrivateSeller><Allbuyer></Allbuyer></PrivateSeller>
         
       },
+      {
+        path: "/dashBoard/users/myproduct",
+        element: <PrivateSeller><MyProducts></MyProducts></PrivateSeller>
+        
+      },
+      
       {
         path: "/dashBoard/payment/:id",
         element:<Payment></Payment>,

@@ -17,20 +17,35 @@ const ProductDetails = ({ product,handlerModal}) => {
     time
   } = product;
 
-const handlerWishlist=(e)=>{
+const handlerWishlist=(w)=>{
 
 fetch('http://localhost:5000/wishList',{
   method:'POST',
   headers:{
     'content-type':'application/json'
   },
-  body:JSON.stringify(e)
+  body:JSON.stringify(w)
 })
 .then(res=>res.json())
 .then(data=>{
   console.log(data)
   toast.success("Product add your wishList")
 })
+ }
+ const handlerreport=(r)=>{
+  fetch('http://localhost:5000/report',{
+  method:'POST',
+  headers:{
+    'content-type':'application/json'
+  },
+  body:JSON.stringify(r)
+})
+.then(res=>res.json())
+.then(data=>{
+  console.log(data)
+  toast.success("Report this product")
+})
+
  }
   
   return (
@@ -58,6 +73,11 @@ fetch('http://localhost:5000/wishList',{
         onClick={()=>handlerWishlist(product)}
       className="btn btn-sm btn-primary">
           wishlist
+        </label>
+        <label 
+        onClick={()=>handlerreport(product)}
+      className="btn btn-sm btn-primary">
+         Report
         </label>
        
       

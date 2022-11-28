@@ -42,13 +42,14 @@ const DashBoardLayOut = () => {
         <li><Link to='/dashBoard/users'>All User</Link></li>
         <li><Link to="/dashBoard/users/allseller">All Sellers</Link></li>
         <li><Link to="/dashBoard/users/allbuyer">All Buyer</Link></li>
+        <li><Link to="/dashBoard/users/report">All Report</Link></li>
         </>
       }
       {
           isSeller && 
           <>
           <li><Link to="/dashBoard/users/myBuyers">My Buyer</Link></li>
-          <li><Link to="/dashBoard/users/mybuyer">My Product</Link></li>
+          <li><Link to="/dashBoard/users/myproduct">My Product</Link></li>
           </>
       }
       
