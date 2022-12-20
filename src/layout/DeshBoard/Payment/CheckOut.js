@@ -12,11 +12,10 @@ const CheckOut = ({ buying }) => {
   const stripe = useStripe();
   const elements = useElements();
   const { price, email, buyerName, _id } = buying;
- 
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://bike-resell-server.vercel.app/create-payment-intent", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -67,9 +66,9 @@ const CheckOut = ({ buying }) => {
         price,
         transactionId: paymentIntent.id,
         email,
-        buyingId: _id
+        buyingId: _id,
       };
-      fetch("http://localhost:5000/payment", {
+      fetch("https://bike-resell-server.vercel.app/payment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -82,7 +81,6 @@ const CheckOut = ({ buying }) => {
           if (data.insertedId) {
             setSuccess("Your payment completed");
             setTransactionId(paymentIntent.id);
-           
           }
         });
     }

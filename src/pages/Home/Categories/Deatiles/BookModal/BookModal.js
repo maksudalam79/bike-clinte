@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../../../context/AuthProvider";
 
-const BookModal = ({ item,setItem,handlerWishList }) => {
+const BookModal = ({ item, setItem, handlerWishList }) => {
   const { name: productName, resaleprice, img } = item;
   const { user } = useContext(AuthContext);
   const handlarModalSubmit = (event) => {
@@ -16,14 +16,14 @@ const BookModal = ({ item,setItem,handlerWishList }) => {
     const location = from.location.value;
 
     const buyer = {
-      name:productName,
+      name: productName,
       buyerName: name,
       email,
       phone,
       price,
       location,
     };
-  fetch("http://localhost:5000/buyer", {
+    fetch("https://bike-resell-server.vercel.app/buyer", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -35,8 +35,8 @@ const BookModal = ({ item,setItem,handlerWishList }) => {
         console.log(data);
         if (data.acknowledged) {
           toast.success("Thank you so much for your order");
-          from.reset()
-          setItem(null)
+          from.reset();
+          setItem(null);
         }
       });
   };
@@ -95,9 +95,9 @@ const BookModal = ({ item,setItem,handlerWishList }) => {
             {user?.email ? (
               <input className="btn w-full" type="submit" value="Submit" />
             ) : (
-              
-              <Link to="/login"><button className="btn btn-sm">Log In</button></Link>
-              
+              <Link to="/login">
+                <button className="btn btn-sm">Log In</button>
+              </Link>
             )}
           </form>
         </div>

@@ -11,7 +11,9 @@ const MyWishlist = () => {
   } = useQuery({
     queryKey: ["wistList"],
     queryFn: () =>
-      fetch("http://localhost:5000/wistList").then((res) => res.json()),
+      fetch("https://bike-resell-server.vercel.app/wistList").then((res) =>
+        res.json()
+      ),
   });
   if (isLoading) return <Loading></Loading>;
   if (error) return "An error has occurred: " + error.message;

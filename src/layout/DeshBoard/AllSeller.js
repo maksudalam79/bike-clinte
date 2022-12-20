@@ -13,15 +13,15 @@ const AllSeller = () => {
   } = useQuery({
     queryKey: ["users"],
     queryFn: () =>
-      fetch(`http://localhost:5000/users/${role.role}`).then((res) =>
-        res.json()
+      fetch(`https://bike-resell-server.vercel.app/users/${role.role}`).then(
+        (res) => res.json()
       ),
   });
   console.log(users);
 
   const handleDelete = (_id) => {
-    fetch(`http://localhost:5000/users/${_id}`, {
-      method: 'DELETE',
+    fetch(`https://bike-resell-server.vercel.app/users/${_id}`, {
+      method: "DELETE",
     })
       .then((res) => res.json())
       .then((data) => {

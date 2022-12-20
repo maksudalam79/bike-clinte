@@ -41,11 +41,11 @@ const Signup = () => {
         toast("User Create Successfully");
         const userInfo = {
           displayName: data.name,
-          role:data.role
+          role: data.role,
         };
         updateUser(userInfo)
           .then(() => {
-            saveUser(data.name, data.email,data.role);
+            saveUser(data.name, data.email, data.role);
           })
           .catch((error) => console.log(error));
       })
@@ -54,9 +54,9 @@ const Signup = () => {
         setSignupError(error.message);
       });
   };
-  const saveUser = (name, email,role) => {
-    const user = { name, email,role };
-    fetch("http://localhost:5000/users", {
+  const saveUser = (name, email, role) => {
+    const user = { name, email, role };
+    fetch("https://bike-resell-server.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",

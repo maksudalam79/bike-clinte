@@ -43,11 +43,17 @@ export const router = createBrowserRouter([
         path: "/bikeCategories/:id",
         element: <CategoryDetails></CategoryDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/bikeProduct/${params.id}`),
+          fetch(
+            `https://bike-resell-server.vercel.app/bikeProduct/${params.id}`
+          ),
       },
       {
         path: "/addproducts",
-        element:<PrivateSeller><AddAProducts></AddAProducts></PrivateSeller>,
+        element: (
+          <PrivateSeller>
+            <AddAProducts></AddAProducts>
+          </PrivateSeller>
+        ),
       },
       {
         path: "/blogs",
@@ -73,43 +79,63 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashBoard/users",
-        element: <PrivateAdmin><AllUsers></AllUsers></PrivateAdmin>
+        element: (
+          <PrivateAdmin>
+            <AllUsers></AllUsers>
+          </PrivateAdmin>
+        ),
       },
       {
         path: "/dashBoard/users/allseller",
-        element: <PrivateAdmin><AllSeller></AllSeller></PrivateAdmin>
-        
+        element: (
+          <PrivateAdmin>
+            <AllSeller></AllSeller>
+          </PrivateAdmin>
+        ),
       },
       {
         path: "/dashBoard/users/report",
-        element:<PrivateAdmin><AllReport></AllReport></PrivateAdmin>
-        
+        element: (
+          <PrivateAdmin>
+            <AllReport></AllReport>
+          </PrivateAdmin>
+        ),
       },
       {
         path: "/dashBoard/users/allbuyer",
-        element: <PrivateAdmin><Allbuyer></Allbuyer></PrivateAdmin>
-        
+        element: (
+          <PrivateAdmin>
+            <Allbuyer></Allbuyer>
+          </PrivateAdmin>
+        ),
       },
       {
         path: "/dashBoard/users/myBuyers",
-        element: <PrivateSeller><Allbuyer></Allbuyer></PrivateSeller>
-        
+        element: (
+          <PrivateSeller>
+            <Allbuyer></Allbuyer>
+          </PrivateSeller>
+        ),
       },
       {
         path: "/dashBoard/users/myproduct",
-        element: <PrivateSeller><MyProducts></MyProducts></PrivateSeller>
-        
+        element: (
+          <PrivateSeller>
+            <MyProducts></MyProducts>
+          </PrivateSeller>
+        ),
       },
-      
+
       {
         path: "/dashBoard/payment/:id",
-        element:<Payment></Payment>,
-        loader:({params})=>fetch(`http://localhost:5000/buyer/${params.id}`)
+        element: <Payment></Payment>,
+        loader: ({ params }) =>
+          fetch(`https://bike-resell-server.vercel.app/buyer/${params.id}`),
       },
       {
         path: "*",
         element: <Found></Found>,
-    },
+      },
     ],
   },
 ]);
